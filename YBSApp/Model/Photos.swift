@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct Photos: Codable, Hashable {
+    let page, pages, perpage, total: Int
+    let photo: [FlickrPhoto]
+}

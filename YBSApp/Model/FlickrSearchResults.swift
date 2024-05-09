@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct FlickrSearchResults: Codable, Hashable {
+    let stat: String?
+    let photos: Photos?
+}
