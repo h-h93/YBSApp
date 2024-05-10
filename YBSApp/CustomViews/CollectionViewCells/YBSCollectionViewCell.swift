@@ -8,10 +8,10 @@
 import UIKit
 
 class YBSCollectionViewCell: UICollectionViewCell {
-    private let pokemonImage = PKDexAvatarImageView(frame: .zero)
-    private let pokemonNameLabel = PKDexTitleLabel(textAlignment: .center)
+    private let image = YBSImageView(frame: .zero)
+    private let titeLabel = YBSTitleLabel(textAlignment: .center)
     
-    static let reuseID = "PokemonCell"
+    static let reuseID = "Cell"
     
     
     override init(frame: CGRect) {
@@ -29,28 +29,29 @@ class YBSCollectionViewCell: UICollectionViewCell {
         layer.borderWidth = 2
         layer.borderColor = UIColor.secondarySystemBackground.cgColor
         layer.cornerRadius = 10
-        pokemonNameLabel.minimumScaleFactor = 0.70
+        titeLabel.minimumScaleFactor = 0.50
+        let padding: CGFloat = 5
         
-        addSubview(pokemonImage)
-        addSubview(pokemonNameLabel)
+        addSubview(image)
+        addSubview(titeLabel)
         
         NSLayoutConstraint.activate([
-            pokemonImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
-            pokemonImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            pokemonImage.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-            pokemonImage.heightAnchor.constraint(equalToConstant: 100),
+            image.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
+            image.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
+            image.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
+            image.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -55),
             
-            pokemonNameLabel.topAnchor.constraint(equalTo: pokemonImage.bottomAnchor, constant: 5),
-            pokemonNameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            pokemonNameLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            pokemonNameLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            titeLabel.topAnchor.constraint(equalTo: image.bottomAnchor, constant: padding),
+            titeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            titeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            titeLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
             
         ])
     }
     
     
-    func set(pokemon: Pokemon) {
-        pokemonNameLabel.text = pokemon.name
-        pokemonImage.downloadPokemonImage(url: pokemon.artworkURL)
+    func set(picture: FlickrPhoto) {
+        titeLabel.text = picture.title
+        image.downloadPokemonImage(url: picture.imageURL)
     }
 }

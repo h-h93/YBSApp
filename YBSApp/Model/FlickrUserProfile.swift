@@ -15,7 +15,8 @@ struct UserProfile: Codable {
 // MARK: - Person
 struct Person: Codable {
     let id, nsid: String
-    let username, realname, location: [String : String]
+    let username: [String : String]
+    let realname, location: [String : String]?
     let description, photosurl, profileurl, mobileurl: [String: String]?
     let photos: UserPhotos
 }

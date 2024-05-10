@@ -22,7 +22,18 @@
 		673BD6EF2BEBEE7C00A6D002 /* FlickrPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD6EE2BEBEE7C00A6D002 /* FlickrPhoto.swift */; };
 		673BD6F12BEBEEAA00A6D002 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD6F02BEBEEAA00A6D002 /* Photos.swift */; };
 		673BD6F32BED684F00A6D002 /* FlickrUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD6F22BED684F00A6D002 /* FlickrUserProfile.swift */; };
-		673BD6F52BED8E7C00A6D002 /* Flickr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD6F42BED8E7C00A6D002 /* Flickr.swift */; };
+		673BD6F92BEE9A5F00A6D002 /* YBSCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD6F82BEE9A5F00A6D002 /* YBSCollectionView.swift */; };
+		673BD6FB2BEE9AFF00A6D002 /* AppLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD6FA2BEE9AFF00A6D002 /* AppLayout.swift */; };
+		673BD6FF2BEEB81700A6D002 /* YBSCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD6FE2BEEB81700A6D002 /* YBSCollectionViewCell.swift */; };
+		673BD7022BEEB86500A6D002 /* YBSImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD7012BEEB86500A6D002 /* YBSImageView.swift */; };
+		673BD7052BEEBD5100A6D002 /* YBSTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD7042BEEBD5100A6D002 /* YBSTitleLabel.swift */; };
+		673BD7082BEECBD500A6D002 /* YBSLoadingAnimationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD7072BEECBD500A6D002 /* YBSLoadingAnimationVC.swift */; };
+		673BD70B2BEECF9900A6D002 /* YBSContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD70A2BEECF9900A6D002 /* YBSContainerView.swift */; };
+		673BD70E2BEECFE800A6D002 /* YBSAlertControllerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD70D2BEECFE800A6D002 /* YBSAlertControllerVC.swift */; };
+		673BD7102BEED01700A6D002 /* YBSBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD70F2BEED01700A6D002 /* YBSBodyLabel.swift */; };
+		673BD7132BEED1B900A6D002 /* YBSButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD7122BEED1B900A6D002 /* YBSButton.swift */; };
+		673BD7162BEED70E00A6D002 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD7152BEED70E00A6D002 /* UIView+Ext.swift */; };
+		673BD7182BEED96100A6D002 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD7172BEED96100A6D002 /* UIViewController+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +73,18 @@
 		673BD6EE2BEBEE7C00A6D002 /* FlickrPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhoto.swift; sourceTree = "<group>"; };
 		673BD6F02BEBEEAA00A6D002 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		673BD6F22BED684F00A6D002 /* FlickrUserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrUserProfile.swift; sourceTree = "<group>"; };
-		673BD6F42BED8E7C00A6D002 /* Flickr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flickr.swift; sourceTree = "<group>"; };
+		673BD6F82BEE9A5F00A6D002 /* YBSCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBSCollectionView.swift; sourceTree = "<group>"; };
+		673BD6FA2BEE9AFF00A6D002 /* AppLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLayout.swift; sourceTree = "<group>"; };
+		673BD6FE2BEEB81700A6D002 /* YBSCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBSCollectionViewCell.swift; sourceTree = "<group>"; };
+		673BD7012BEEB86500A6D002 /* YBSImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBSImageView.swift; sourceTree = "<group>"; };
+		673BD7042BEEBD5100A6D002 /* YBSTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBSTitleLabel.swift; sourceTree = "<group>"; };
+		673BD7072BEECBD500A6D002 /* YBSLoadingAnimationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBSLoadingAnimationVC.swift; sourceTree = "<group>"; };
+		673BD70A2BEECF9900A6D002 /* YBSContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBSContainerView.swift; sourceTree = "<group>"; };
+		673BD70D2BEECFE800A6D002 /* YBSAlertControllerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBSAlertControllerVC.swift; sourceTree = "<group>"; };
+		673BD70F2BEED01700A6D002 /* YBSBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBSBodyLabel.swift; sourceTree = "<group>"; };
+		673BD7122BEED1B900A6D002 /* YBSButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBSButton.swift; sourceTree = "<group>"; };
+		673BD7152BEED70E00A6D002 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		673BD7172BEED96100A6D002 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,11 +135,13 @@
 		673BD6B12BEBDF2F00A6D002 /* YBSApp */ = {
 			isa = PBXGroup;
 			children = (
-				673BD6EB2BEBEE0F00A6D002 /* Manager */,
-				673BD6EA2BEBEE0900A6D002 /* Model */,
+				673BD7142BEED6EF00A6D002 /* Extensions */,
 				673BD6E52BEBE7BD00A6D002 /* Utilities */,
 				673BD6E22BEBDF9D00A6D002 /* Support */,
-				673BD6B62BEBDF2F00A6D002 /* ViewController.swift */,
+				673BD6EB2BEBEE0F00A6D002 /* Manager */,
+				673BD6EA2BEBEE0900A6D002 /* Model */,
+				673BD6F72BEE9A1200A6D002 /* CustomViews */,
+				673BD6F62BEE82D100A6D002 /* Screens */,
 				673BD6C02BEBDF2F00A6D002 /* Info.plist */,
 			);
 			path = YBSApp;
@@ -156,6 +180,7 @@
 			children = (
 				673BD6E62BEBE7D000A6D002 /* Constants.swift */,
 				673BD6E82BEBE7F800A6D002 /* YBSError.swift */,
+				673BD6FA2BEE9AFF00A6D002 /* AppLayout.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -167,7 +192,6 @@
 				673BD6EE2BEBEE7C00A6D002 /* FlickrPhoto.swift */,
 				673BD6F02BEBEEAA00A6D002 /* Photos.swift */,
 				673BD6F22BED684F00A6D002 /* FlickrUserProfile.swift */,
-				673BD6F42BED8E7C00A6D002 /* Flickr.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -178,6 +202,103 @@
 				673BD6E32BEBE73100A6D002 /* NetworkManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		673BD6F62BEE82D100A6D002 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				673BD6B62BEBDF2F00A6D002 /* ViewController.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		673BD6F72BEE9A1200A6D002 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				673BD7112BEED12300A6D002 /* Buttons */,
+				673BD70C2BEECFB800A6D002 /* Views */,
+				673BD7092BEECF7800A6D002 /* AlertControllers */,
+				673BD7062BEECBC000A6D002 /* ViewControllers */,
+				673BD7032BEEBD3600A6D002 /* Labels */,
+				673BD7002BEEB85900A6D002 /* ImageViews */,
+				673BD6FD2BEEB7F500A6D002 /* CollectionViewCells */,
+				673BD6FC2BEEB7E800A6D002 /* CollectionView */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		673BD6FC2BEEB7E800A6D002 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				673BD6F82BEE9A5F00A6D002 /* YBSCollectionView.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		673BD6FD2BEEB7F500A6D002 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				673BD6FE2BEEB81700A6D002 /* YBSCollectionViewCell.swift */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		673BD7002BEEB85900A6D002 /* ImageViews */ = {
+			isa = PBXGroup;
+			children = (
+				673BD7012BEEB86500A6D002 /* YBSImageView.swift */,
+			);
+			path = ImageViews;
+			sourceTree = "<group>";
+		};
+		673BD7032BEEBD3600A6D002 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				673BD7042BEEBD5100A6D002 /* YBSTitleLabel.swift */,
+				673BD70F2BEED01700A6D002 /* YBSBodyLabel.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
+		673BD7062BEECBC000A6D002 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				673BD7072BEECBD500A6D002 /* YBSLoadingAnimationVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		673BD7092BEECF7800A6D002 /* AlertControllers */ = {
+			isa = PBXGroup;
+			children = (
+				673BD70D2BEECFE800A6D002 /* YBSAlertControllerVC.swift */,
+			);
+			path = AlertControllers;
+			sourceTree = "<group>";
+		};
+		673BD70C2BEECFB800A6D002 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				673BD70A2BEECF9900A6D002 /* YBSContainerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		673BD7112BEED12300A6D002 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				673BD7122BEED1B900A6D002 /* YBSButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		673BD7142BEED6EF00A6D002 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				673BD7152BEED70E00A6D002 /* UIView+Ext.swift */,
+				673BD7172BEED96100A6D002 /* UIViewController+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,16 +432,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				673BD6F12BEBEEAA00A6D002 /* Photos.swift in Sources */,
-				673BD6F52BED8E7C00A6D002 /* Flickr.swift in Sources */,
+				673BD7132BEED1B900A6D002 /* YBSButton.swift in Sources */,
+				673BD6FB2BEE9AFF00A6D002 /* AppLayout.swift in Sources */,
+				673BD70B2BEECF9900A6D002 /* YBSContainerView.swift in Sources */,
+				673BD7182BEED96100A6D002 /* UIViewController+Ext.swift in Sources */,
 				673BD6E72BEBE7D000A6D002 /* Constants.swift in Sources */,
 				673BD6EF2BEBEE7C00A6D002 /* FlickrPhoto.swift in Sources */,
 				673BD6E92BEBE7F800A6D002 /* YBSError.swift in Sources */,
 				673BD6E42BEBE73100A6D002 /* NetworkManager.swift in Sources */,
 				673BD6F32BED684F00A6D002 /* FlickrUserProfile.swift in Sources */,
+				673BD70E2BEECFE800A6D002 /* YBSAlertControllerVC.swift in Sources */,
 				673BD6ED2BEBEE3400A6D002 /* FlickrSearchResults.swift in Sources */,
+				673BD7162BEED70E00A6D002 /* UIView+Ext.swift in Sources */,
 				673BD6B72BEBDF2F00A6D002 /* ViewController.swift in Sources */,
 				673BD6B32BEBDF2F00A6D002 /* AppDelegate.swift in Sources */,
+				673BD7102BEED01700A6D002 /* YBSBodyLabel.swift in Sources */,
+				673BD7082BEECBD500A6D002 /* YBSLoadingAnimationVC.swift in Sources */,
 				673BD6B52BEBDF2F00A6D002 /* SceneDelegate.swift in Sources */,
+				673BD7022BEEB86500A6D002 /* YBSImageView.swift in Sources */,
+				673BD6F92BEE9A5F00A6D002 /* YBSCollectionView.swift in Sources */,
+				673BD7052BEEBD5100A6D002 /* YBSTitleLabel.swift in Sources */,
+				673BD6FF2BEEB81700A6D002 /* YBSCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

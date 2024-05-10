@@ -7,9 +7,7 @@
 
 import UIKit
 
-class YBSCollectionView: UICollectionView {
-    static let reuseID = "Cell"
-    
+class YBSCollectionView: UICollectionView {    
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         configure()
@@ -23,6 +21,7 @@ class YBSCollectionView: UICollectionView {
     
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = .systemBackground
         let section = AppLayout.shared.configureImageCollectionViewSection()
         let layout = UICollectionViewCompositionalLayout(section: section)
         setCollectionViewLayout(layout, animated: true)
