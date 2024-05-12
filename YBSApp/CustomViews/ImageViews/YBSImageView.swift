@@ -30,10 +30,7 @@ class YBSImageView: UIImageView {
     }
     
     
-    func downloadPokemonImage(url: String) {
+    func downloadImage(url: String) {
         Task(priority: .background) { image = await NetworkManager.shared.downloadImage(from: url) ?? placeHolderImage }
     }
-    
-    
-    
 }

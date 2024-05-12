@@ -36,9 +36,10 @@ class YBSLoadingAnimationVC: UIViewController {
     
     func dismissLoadingView() {
         DispatchQueue.main.async { [weak self] in
-            self?.containerView.removeFromSuperview()
-            self?.containerView = nil
-            
+            if self?.containerView != nil {
+                self?.containerView.removeFromSuperview()
+                self?.containerView = nil
+            }
         }
     }
 }

@@ -19,11 +19,27 @@ class YBSAlertControllerVC: UIViewController {
     
     let padding: CGFloat = 20
     
+    init(title: String, message: String, buttonTitle: String = "Ok") {
+        super.init(nibName: nil, bundle: nil)
+        self.alertTitle = title
+        self.message = message
+        self.buttonTitle = buttonTitle
+    }
+    
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        view.addSubviews(view: containerView, titleLabel, messageLabel, actionButton)
+        view.addSubviews(containerView, titleLabel, messageLabel, actionButton)
+        configureContainerView()
+        configureTitleLabel()
+        configureMessageLabel()
+        configureActionButton()
     }
     
     

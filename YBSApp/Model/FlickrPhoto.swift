@@ -13,11 +13,6 @@ struct FlickrPhoto: Codable, Hashable {
     let farm: Int
     let title: String
     let ispublic, isfriend, isfamily: Int
-    var username: String?
-    
-    mutating func setUsername(username: String) {
-        self.username = username
-    }
     
     var imageURL: String {
         let urlString = String(format: FlickrURL.imageURL.rawValue, farm, server, id, secret)

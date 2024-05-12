@@ -9,9 +9,10 @@ import UIKit
 
 extension UIViewController {
     func presentYBSAlert(title: String, message: String, buttonTitle: String) {
-        let alertVC = YBSAlertControllerVC()
+        let alertVC = YBSAlertControllerVC(title: title, message: message, buttonTitle: buttonTitle)
         alertVC.modalPresentationStyle = .overFullScreen
         alertVC.modalTransitionStyle = .crossDissolve
         present(alertVC, animated: true)
     }
 }
+

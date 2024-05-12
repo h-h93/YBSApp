@@ -17,6 +17,8 @@ struct Person: Codable {
     let id, nsid: String
     let username: [String : String]
     let realname, location: [String : String]?
+    let iconserver: String?
+    let iconfarm: Int?
     let description, photosurl, profileurl, mobileurl: [String: String]?
     let photos: UserPhotos
 }

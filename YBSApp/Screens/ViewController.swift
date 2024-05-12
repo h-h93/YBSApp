@@ -14,18 +14,36 @@ class ViewController: YBSLoadingAnimationVC {
     var collectionView: YBSCollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, FlickrPhoto>!
     var photos = [FlickrPhoto]()
+    var filteredPhotos = [FlickrPhoto]()
+    var isSearching = false
+    var hasMorePhotos = true
+    var isLoadingMorePhotos = false
+    var offset = 1
+    let offsetIncrementValue = 1
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+        configureSearchController()
         configureCollectionView()
         configureDataSource()
-        getImages()
+        getImages(page: offset)
     }
     
     
     func configure() {
-        view.backgroundColor = .systemPink
+        view.backgroundColor = .systemBackground
+    }
+    
+    
+    func configureSearchController() {
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search"
+        searchController.obscuresBackgroundDuringPresentation = true
+        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.searchController = searchController
     }
 
     
@@ -44,15 +62,23 @@ class ViewController: YBSLoadingAnimationVC {
     }
     
     
-    func getImages() {
+    func getImages(page: Int) {
         defer {
+            isLoadingMorePhotos = false
             dismissLoadingView()
         }
+        isLoadingMorePhotos = true
+        showLoadingView()
         Task {
-            showLoadingView()
             do {
-                photos = try await NetworkManager.shared.getImages(of: "Yorkshire", page: 1) ?? [FlickrPhoto]()
-                updateData(on: photos)
+                if hasMorePhotos {
+                    let flickrPhotos = try await NetworkManager.shared.getImages(of: "Yorkshire", page: page)
+                    photos.append(contentsOf: flickrPhotos.0 ?? [FlickrPhoto]())
+                    updateData(on: photos)
+                    if !flickrPhotos.hasMorePages {
+                        hasMorePhotos = false
+                    }
+                }
             } catch {
                 if let error = error as? YBSError {
                     presentYBSAlert(title: "Oops", message: error.rawValue, buttonTitle: "Ok")
@@ -84,10 +110,52 @@ class ViewController: YBSLoadingAnimationVC {
         snapshot.appendItems(pictures)
         DispatchQueue.main.async { [weak self] in self?.dataSource.apply(snapshot, animatingDifferences: true) }
     }
-
 }
 
 
 extension ViewController: UICollectionViewDelegate {
     
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = view.frame.size.height
+        
+        if offsetY > contentHeight - height {
+            guard hasMorePhotos, !isLoadingMorePhotos else { return }
+            offset += offsetIncrementValue
+            getImages(page: offset)
+        }
+    }
 }
+
+
+extension ViewController: UISearchControllerDelegate, UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let filter = searchController.searchBar.text, !filter.isEmpty else {
+            filteredPhotos.removeAll()
+            isSearching = false
+            updateData(on: photos)
+            return
+        }
+        
+        isSearching = true
+        filteredPhotos = photos.filter {
+            $0.title.lowercased().contains(filter.lowercased())
+            
+        }
+        updateData(on: filteredPhotos)
+    }
+}
+
+/*
+ var photoUserDetails = [UserProfile]()
+ var photoDetails = [FlickrPhotoDetails]()
+ 
+ for (index,item) in photos.enumerated() {
+ let user = try await NetworkManager.shared.getUserDetails(userID: item.owner)
+ let details = try await NetworkManager.shared.getPhotoDetails(photo: item)
+ photoUserDetails.append(user)
+ photoDetails.append(details)
+ }
+ */

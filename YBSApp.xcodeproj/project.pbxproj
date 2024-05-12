@@ -34,6 +34,8 @@
 		673BD7132BEED1B900A6D002 /* YBSButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD7122BEED1B900A6D002 /* YBSButton.swift */; };
 		673BD7162BEED70E00A6D002 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD7152BEED70E00A6D002 /* UIView+Ext.swift */; };
 		673BD7182BEED96100A6D002 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD7172BEED96100A6D002 /* UIViewController+Ext.swift */; };
+		673BD71A2BEFF66100A6D002 /* YBSProfileIconImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD7192BEFF66100A6D002 /* YBSProfileIconImageView.swift */; };
+		673BD71C2BF0062C00A6D002 /* FlickrPhotoDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD71B2BF0062C00A6D002 /* FlickrPhotoDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,8 @@
 		673BD7122BEED1B900A6D002 /* YBSButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBSButton.swift; sourceTree = "<group>"; };
 		673BD7152BEED70E00A6D002 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		673BD7172BEED96100A6D002 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		673BD7192BEFF66100A6D002 /* YBSProfileIconImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBSProfileIconImageView.swift; sourceTree = "<group>"; };
+		673BD71B2BF0062C00A6D002 /* FlickrPhotoDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhotoDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +196,7 @@
 				673BD6EE2BEBEE7C00A6D002 /* FlickrPhoto.swift */,
 				673BD6F02BEBEEAA00A6D002 /* Photos.swift */,
 				673BD6F22BED684F00A6D002 /* FlickrUserProfile.swift */,
+				673BD71B2BF0062C00A6D002 /* FlickrPhotoDetails.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -247,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				673BD7012BEEB86500A6D002 /* YBSImageView.swift */,
+				673BD7192BEFF66100A6D002 /* YBSProfileIconImageView.swift */,
 			);
 			path = ImageViews;
 			sourceTree = "<group>";
@@ -436,6 +442,7 @@
 				673BD6FB2BEE9AFF00A6D002 /* AppLayout.swift in Sources */,
 				673BD70B2BEECF9900A6D002 /* YBSContainerView.swift in Sources */,
 				673BD7182BEED96100A6D002 /* UIViewController+Ext.swift in Sources */,
+				673BD71A2BEFF66100A6D002 /* YBSProfileIconImageView.swift in Sources */,
 				673BD6E72BEBE7D000A6D002 /* Constants.swift in Sources */,
 				673BD6EF2BEBEE7C00A6D002 /* FlickrPhoto.swift in Sources */,
 				673BD6E92BEBE7F800A6D002 /* YBSError.swift in Sources */,
@@ -452,6 +459,7 @@
 				673BD7022BEEB86500A6D002 /* YBSImageView.swift in Sources */,
 				673BD6F92BEE9A5F00A6D002 /* YBSCollectionView.swift in Sources */,
 				673BD7052BEEBD5100A6D002 /* YBSTitleLabel.swift in Sources */,
+				673BD71C2BF0062C00A6D002 /* FlickrPhotoDetails.swift in Sources */,
 				673BD6FF2BEEB81700A6D002 /* YBSCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
