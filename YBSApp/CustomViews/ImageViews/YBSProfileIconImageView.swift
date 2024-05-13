@@ -31,6 +31,7 @@ class YBSProfileIconImageView: UIImageView {
         image = placeHolderImage
         contentMode = .scaleToFill
         translatesAutoresizingMaskIntoConstraints = false
+        isUserInteractionEnabled = true
     }
     
     

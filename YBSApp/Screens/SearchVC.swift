@@ -7,15 +7,14 @@
 
 import UIKit
 
-class ViewController: YBSLoadingAnimationVC {
+class SearchVC: YBSLoadingAnimationVC {
     enum Section {
         case main
     }
+    var searchTerm = "Yorkshire"
     var collectionView: YBSCollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, FlickrPhoto>!
     var photos = [FlickrPhoto]()
-    var filteredPhotos = [FlickrPhoto]()
-    var isSearching = false
     var hasMorePhotos = true
     var isLoadingMorePhotos = false
     var offset = 1
@@ -28,7 +27,7 @@ class ViewController: YBSLoadingAnimationVC {
         configureSearchController()
         configureCollectionView()
         configureDataSource()
-        getImages(page: offset)
+        getImages(of: searchTerm, page: offset)
     }
     
     
@@ -41,6 +40,7 @@ class ViewController: YBSLoadingAnimationVC {
         let searchController = UISearchController()
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "Search"
+        searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = true
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
@@ -49,6 +49,9 @@ class ViewController: YBSLoadingAnimationVC {
     
     func configureCollectionView() {
         collectionView = YBSCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        let section = AppLayout.shared.configureImageCollectionViewSection()
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        collectionView.setLayout(layout: layout)
         collectionView.register(YBSCollectionViewCell.self, forCellWithReuseIdentifier: YBSCollectionViewCell.reuseID)
         collectionView.delegate = self
         collectionView.dataSource = dataSource
@@ -62,7 +65,7 @@ class ViewController: YBSLoadingAnimationVC {
     }
     
     
-    func getImages(page: Int) {
+    func getImages(of searchTerm: String, page: Int) {
         defer {
             isLoadingMorePhotos = false
             dismissLoadingView()
@@ -72,9 +75,9 @@ class ViewController: YBSLoadingAnimationVC {
         Task {
             do {
                 if hasMorePhotos {
-                    let flickrPhotos = try await NetworkManager.shared.getImages(of: "Yorkshire", page: page)
-                    photos.append(contentsOf: flickrPhotos.0 ?? [FlickrPhoto]())
-                    updateData(on: photos)
+                    let flickrPhotos = try await NetworkManager.shared.getImages(of: searchTerm, page: page)
+                        photos.append(contentsOf: flickrPhotos.0 ?? [FlickrPhoto]())
+                        updateData(on: photos)
                     if !flickrPhotos.hasMorePages {
                         hasMorePhotos = false
                     }
@@ -98,12 +101,6 @@ class ViewController: YBSLoadingAnimationVC {
     }
     
     
-    func updateUI(with picture: [FlickrPhoto]) {
-        self.photos.append(contentsOf: picture)
-        updateData(on: self.photos)
-    }
-    
-    
     func updateData(on pictures: [FlickrPhoto]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, FlickrPhoto>()
         snapshot.appendSections([.main])
@@ -111,51 +108,3 @@ class ViewController: YBSLoadingAnimationVC {
         DispatchQueue.main.async { [weak self] in self?.dataSource.apply(snapshot, animatingDifferences: true) }
     }
 }
-
-
-extension ViewController: UICollectionViewDelegate {
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        let height = view.frame.size.height
-        
-        if offsetY > contentHeight - height {
-            guard hasMorePhotos, !isLoadingMorePhotos else { return }
-            offset += offsetIncrementValue
-            getImages(page: offset)
-        }
-    }
-}
-
-
-extension ViewController: UISearchControllerDelegate, UISearchResultsUpdating {
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let filter = searchController.searchBar.text, !filter.isEmpty else {
-            filteredPhotos.removeAll()
-            isSearching = false
-            updateData(on: photos)
-            return
-        }
-        
-        isSearching = true
-        filteredPhotos = photos.filter {
-            $0.title.lowercased().contains(filter.lowercased())
-            
-        }
-        updateData(on: filteredPhotos)
-    }
-}
-
-/*
- var photoUserDetails = [UserProfile]()
- var photoDetails = [FlickrPhotoDetails]()
- 
- for (index,item) in photos.enumerated() {
- let user = try await NetworkManager.shared.getUserDetails(userID: item.owner)
- let details = try await NetworkManager.shared.getPhotoDetails(photo: item)
- photoUserDetails.append(user)
- photoDetails.append(details)
- }
- */

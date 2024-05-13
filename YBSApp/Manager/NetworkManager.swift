@@ -21,7 +21,6 @@ class NetworkManager {
         let urlString = FlickrURL.baseSearchURL.rawValue + key + "&text=\(of)&page=\(page)"
         guard let url = URL(string: urlString) else { throw YBSError.invalidURL }
         var hasMore = true
-        print(url)
         
         let (data, response) = try await URLSession.shared.data(from: url)
         
@@ -50,8 +49,6 @@ class NetworkManager {
         do {
             let user = try decoder.decode(UserProfile.self, from: data)
             return user
-            //print("User \(user)")
-            //try await getUserPhotos(userID: userID, page: 1)
         } catch {
             print(error)
             throw YBSError.unableToCompleteRequest
@@ -77,17 +74,20 @@ class NetworkManager {
     }
     
     
-    func getUserPhotos(userID: String, page: Int) async throws {
-        //user_id=
+    func getUserPhotos(userID: String, page: Int) async throws -> ([FlickrPhoto]?, hasMorePages: Bool) {
         guard let url = URL(string: FlickrURL.baseUserImagesURL.rawValue + key + "&user_id=\(userID)&page=\(page)") else { throw YBSError.invalidURL }
-        
+        var hasMore = true
         let (data, response) = try await URLSession.shared.data(from: url)
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { throw YBSError.serverError }
         
         do {
-            let photos = try decoder.decode(FlickrSearchResults.self, from: data)
+            let result = try decoder.decode(FlickrSearchResults.self, from: data)
+            if result.photos?.page == result.photos?.pages {
+                hasMore = false
+            }
+            return (result.photos?.photo, hasMore)
         } catch {
-            
+            throw YBSError.decodingFailed
         }
     }
     

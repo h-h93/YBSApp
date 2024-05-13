@@ -8,7 +8,7 @@
 import Foundation
 
 struct FlickrPhoto: Codable, Hashable {
-    
+    let uniqueID = UUID().uuidString
     let id, owner, secret, server: String
     let farm: Int
     let title: String

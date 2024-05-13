@@ -36,6 +36,6 @@ class YBSTitleLabel: UILabel {
         minimumScaleFactor = 0.75
         numberOfLines = 2
         lineBreakMode = .byTruncatingTail
-        
+        isUserInteractionEnabled = true
     }
 }

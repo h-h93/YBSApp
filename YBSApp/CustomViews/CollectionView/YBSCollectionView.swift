@@ -22,8 +22,10 @@ class YBSCollectionView: UICollectionView {
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .systemBackground
-        let section = AppLayout.shared.configureImageCollectionViewSection()
-        let layout = UICollectionViewCompositionalLayout(section: section)
+    }
+    
+    
+    func setLayout(layout: UICollectionViewLayout) {
         setCollectionViewLayout(layout, animated: true)
     }
 }
