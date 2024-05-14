@@ -8,7 +8,6 @@
 import UIKit
 
 class YBSProfileIconImageView: UIImageView {
-    
     private let placeHolderImage = Images.defaultImage
     
     override init(frame: CGRect) {

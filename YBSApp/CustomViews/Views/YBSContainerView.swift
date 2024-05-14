@@ -8,7 +8,6 @@
 import UIKit
 
 class YBSContainerView: UIView {
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -26,5 +25,4 @@ class YBSContainerView: UIView {
         backgroundColor = .systemBackground
         translatesAutoresizingMaskIntoConstraints = false
     }
-    
 }

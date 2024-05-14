@@ -12,10 +12,10 @@ protocol YBSProfileHeaderViewInteraction: AnyObject {
 }
 
 class YBSProfileHeaderView: UIView {
-    let profileImage = YBSProfileIconImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-    let usernameLabel = YBSTitleLabel(textAlignment: .left)
-    let descriptionLabel = YBSBodyLabel(textAlignment: .left)
-    let locationLabel = UILabel()
+    private let profileImage = YBSProfileIconImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+    private let usernameLabel = YBSTitleLabel(textAlignment: .left)
+    private let descriptionLabel = YBSBodyLabel(textAlignment: .left)
+    private let locationLabel = UILabel()
     weak var headerDelegate: YBSProfileHeaderViewInteraction!
     
     
@@ -37,15 +37,16 @@ class YBSProfileHeaderView: UIView {
         usernameLabel.adjustsFontSizeToFitWidth = true
         usernameLabel.numberOfLines = 0
         usernameLabel.minimumScaleFactor = 0.50
-        //usernameLabel.backgroundColor = .red
         
         locationLabel.translatesAutoresizingMaskIntoConstraints = false
         locationLabel.font = UIFont.systemFont(ofSize: 10)
         locationLabel.textColor = .secondaryLabel
         locationLabel.textAlignment = .center
+        locationLabel.minimumScaleFactor = 0.30
         
         descriptionLabel.textColor = .tertiaryLabel
         descriptionLabel.adjustsFontSizeToFitWidth = true
+        descriptionLabel.minimumScaleFactor = 0.65
         descriptionLabel.numberOfLines = 0
         
         addSubviews(profileImage, usernameLabel, locationLabel, descriptionLabel)
@@ -74,8 +75,8 @@ class YBSProfileHeaderView: UIView {
             locationLabel.widthAnchor.constraint(equalToConstant: 100),
             
             descriptionLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 10),
-            descriptionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            descriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            descriptionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
+            descriptionLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5),
             descriptionLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
@@ -102,8 +103,14 @@ class YBSProfileHeaderView: UIView {
     }
     
     
+    func disableUserInteraction() {
+        profileImage.isUserInteractionEnabled = false
+        usernameLabel.isUserInteractionEnabled = false
+        descriptionLabel.isUserInteractionEnabled = false
+    }
+    
+    
     @objc func loadUserProfile(_ gesture: UITapGestureRecognizer) {
         headerDelegate.didTapHeaderViews()
     }
-    
 }

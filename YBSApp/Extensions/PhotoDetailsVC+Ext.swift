@@ -12,9 +12,12 @@ extension PhotoDetailsVC: YBSProfileHeaderViewInteraction, UITableViewDelegate, 
         return tableViewRowCount
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: YBSTableView.reuseID, for: indexPath)
         cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.adjustsFontSizeToFitWidth = true
+        cell.textLabel?.minimumScaleFactor = 0.60
         switch indexPath.row {
         case  0:
             cell.textLabel?.text = "Title: \n\(photoDetails?.photo.title.content ?? "")"
@@ -24,12 +27,14 @@ extension PhotoDetailsVC: YBSProfileHeaderViewInteraction, UITableViewDelegate, 
             cell.textLabel?.text = "Upload Date: \n\(date)"
         case 3:
             var tags = "Tags:\n"
-            for i in photoDetails.photo.tags.tag {
-                tags += "\(i.content), "
+            if !photoDetails.photo.tags.tag.isEmpty {
+                for i in photoDetails.photo.tags.tag {
+                    tags += "\(i.content), "
+                }
             }
             cell.textLabel?.text = tags
         default:
-            print()
+            break
         }
         return cell
     }
@@ -41,6 +46,10 @@ extension PhotoDetailsVC: YBSProfileHeaderViewInteraction, UITableViewDelegate, 
     
     
     func didTapHeaderViews() {
+        defer {
+            dismissLoadingView()
+        }
+        showLoadingView()
         let profileInfoVC = ProfileInfoVC(userID: photo.owner)
         self.navigationController?.pushViewController(profileInfoVC, animated: true)
     }

@@ -8,16 +8,16 @@
 import UIKit
 
 class YBSAlertControllerVC: UIViewController {
-    let containerView = YBSContainerView()
-    let titleLabel = YBSTitleLabel(textAlignment: .center)
-    let messageLabel = YBSBodyLabel(textAlignment: .center)
-    let actionButton = YBSButton(color: .systemMint, title: "Ok", systemImageName: "checkmark.circle")
+    private let containerView = YBSContainerView()
+    private let titleLabel = YBSTitleLabel(textAlignment: .center)
+    private let messageLabel = YBSBodyLabel(textAlignment: .center)
+    private let actionButton = YBSButton(color: .systemMint, title: "Ok", systemImageName: "checkmark.circle")
     
-    var alertTitle: String?
-    var message: String?
-    var buttonTitle: String?
+    private var alertTitle: String?
+    private var message: String?
+    private var buttonTitle: String?
     
-    let padding: CGFloat = 20
+    private let padding: CGFloat = 20
     
     init(title: String, message: String, buttonTitle: String = "Ok") {
         super.init(nibName: nil, bundle: nil)
@@ -92,5 +92,4 @@ class YBSAlertControllerVC: UIViewController {
     
     
     @objc func dismissView() { self.dismiss(animated: true) }
-    
 }

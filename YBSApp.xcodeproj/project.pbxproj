@@ -46,6 +46,7 @@
 		673BD72F2BF183A200A6D002 /* SearchVC+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD72E2BF183A200A6D002 /* SearchVC+Ext.swift */; };
 		673BD7312BF183C900A6D002 /* PhotoDetailsVC+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD7302BF183C900A6D002 /* PhotoDetailsVC+Ext.swift */; };
 		673BD7332BF18AB200A6D002 /* YBSProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD7322BF18AB200A6D002 /* YBSProfileCollectionViewCell.swift */; };
+		673BD7352BF3AC3900A6D002 /* ProfileInfoVC+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673BD7342BF3AC3900A6D002 /* ProfileInfoVC+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		673BD72E2BF183A200A6D002 /* SearchVC+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchVC+Ext.swift"; sourceTree = "<group>"; };
 		673BD7302BF183C900A6D002 /* PhotoDetailsVC+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoDetailsVC+Ext.swift"; sourceTree = "<group>"; };
 		673BD7322BF18AB200A6D002 /* YBSProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YBSProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		673BD7342BF3AC3900A6D002 /* ProfileInfoVC+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileInfoVC+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,6 +335,7 @@
 				673BD72C2BF1826F00A6D002 /* UITableView+Ext.swift */,
 				673BD72E2BF183A200A6D002 /* SearchVC+Ext.swift */,
 				673BD7302BF183C900A6D002 /* PhotoDetailsVC+Ext.swift */,
+				673BD7342BF3AC3900A6D002 /* ProfileInfoVC+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				673BD6F12BEBEEAA00A6D002 /* Photos.swift in Sources */,
+				673BD7352BF3AC3900A6D002 /* ProfileInfoVC+Ext.swift in Sources */,
 				673BD7132BEED1B900A6D002 /* YBSButton.swift in Sources */,
 				673BD71E2BF0F4BF00A6D002 /* PhotoDetailsVC.swift in Sources */,
 				673BD6FB2BEE9AFF00A6D002 /* AppLayout.swift in Sources */,

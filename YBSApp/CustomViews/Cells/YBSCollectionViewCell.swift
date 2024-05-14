@@ -15,7 +15,6 @@ class YBSCollectionViewCell: UICollectionViewCell {
     
     static let reuseID = "Cell"
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -44,7 +43,7 @@ class YBSCollectionViewCell: UICollectionViewCell {
             image.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
             image.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
             image.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
-            image.heightAnchor.constraint(equalToConstant: 200),
+            image.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -90),
             
             profileImage.topAnchor.constraint(equalTo: image.bottomAnchor, constant: padding),
             profileImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
@@ -72,7 +71,7 @@ class YBSCollectionViewCell: UICollectionViewCell {
             tagLabel.topAnchor.constraint(equalTo: titeLabel.bottomAnchor, constant: padding),
             tagLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
             tagLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
-            tagLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            tagLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -1)
         ])
     }
     

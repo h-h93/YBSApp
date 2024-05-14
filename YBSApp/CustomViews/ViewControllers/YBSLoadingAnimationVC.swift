@@ -8,7 +8,7 @@
 import UIKit
 
 class YBSLoadingAnimationVC: UIViewController {
-    var containerView: UIView!
+    private var containerView: UIView!
     
     func showLoadingView() {
         containerView = UIView(frame: view.bounds)
@@ -29,7 +29,6 @@ class YBSLoadingAnimationVC: UIViewController {
             activityIndicator.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
         ])
-        
         activityIndicator.startAnimating()
     }
     

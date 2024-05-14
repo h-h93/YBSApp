@@ -8,7 +8,6 @@
 import UIKit
 
 class YBSDetailedImageView: UIImageView {
-    
     private let placeHolderImage = Images.defaultImage
     
     override init(frame: CGRect) {

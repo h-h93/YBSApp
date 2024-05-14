@@ -125,6 +125,10 @@ class PhotoDetailsVC: YBSLoadingAnimationVC {
     
     
     func getImageData() {
+        defer {
+            dismissLoadingView()
+        }
+        showLoadingView()
         Task() {
             do {
                 user = try await NetworkManager.shared.getUserDetails(userID: photo.owner)

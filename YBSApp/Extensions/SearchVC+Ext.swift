@@ -8,7 +8,6 @@
 import UIKit
 
 extension SearchVC: UICollectionViewDelegate {
-    
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
@@ -30,7 +29,6 @@ extension SearchVC: UICollectionViewDelegate {
 
 
 extension SearchVC: UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
-    
     func updateSearchResults(for searchController: UISearchController) {
         
     }

@@ -37,5 +37,4 @@ class YBSBodyLabel: UILabel {
         translatesAutoresizingMaskIntoConstraints = false
         isUserInteractionEnabled = true
     }
-    
 }

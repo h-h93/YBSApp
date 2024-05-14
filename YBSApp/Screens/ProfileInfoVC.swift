@@ -40,6 +40,7 @@ class ProfileInfoVC: YBSLoadingAnimationVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+        configureHeaderView()
         configureCollectionView()
         configureDataSource()
         getImages(page: offset)
@@ -50,9 +51,24 @@ class ProfileInfoVC: YBSLoadingAnimationVC {
         view.backgroundColor = .systemBackground
     }
     
-    // add this in 
+
     func configureHeaderView() {
-        
+        view.addSubview(headerView)
+        headerView.disableUserInteraction()
+        NSLayoutConstraint.activate([
+            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            headerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            headerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            headerView.heightAnchor.constraint(equalToConstant: 200)
+        ])
+        Task {
+            do {
+                let user = try await NetworkManager.shared.getUserDetails(userID: userID)
+                headerView.set(user: user)
+            } catch {
+                presentYBSAlert(title: "Something went wrong", message: "Unable to get user information", buttonTitle: "Ok")
+            }
+        }
     }
     
     
@@ -65,7 +81,7 @@ class ProfileInfoVC: YBSLoadingAnimationVC {
         collectionView.dataSource = dataSource
         view.addSubview(collectionView)
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150),
+            collectionView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
@@ -115,27 +131,4 @@ class ProfileInfoVC: YBSLoadingAnimationVC {
         snapshot.appendItems(pictures)
         DispatchQueue.main.async { [weak self] in self?.dataSource.apply(snapshot, animatingDifferences: true) }
     }
-}
-
-
-extension ProfileInfoVC: UICollectionViewDelegate {
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        let offsetY = scrollView.contentOffset.y
-        let ContentHeight = scrollView.contentSize.height
-        let height = view.frame.size.height
-        
-        if offsetY > ContentHeight - height {
-            guard hasMorePhotos, !isLoadingMorePhotos else { return }
-            offset += offsetIncrementValue
-            getImages(page: offset)
-        }
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailsVC = PhotoDetailsVC(photo: photos[indexPath.item])
-        self.navigationController?.pushViewController(detailsVC, animated: true)
-    }
-    
 }

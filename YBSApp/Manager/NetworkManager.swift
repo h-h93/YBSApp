@@ -9,13 +9,14 @@ import UIKit
 
 class NetworkManager {
     static let shared = NetworkManager()
-    let decoder = JSONDecoder()
-    let key = "c2ee27bd86a677482c8d53cbbdd86f2b"
-    let cache = NSCache<NSString, UIImage>()
+    private let decoder = JSONDecoder()
+    private let key = "c2ee27bd86a677482c8d53cbbdd86f2b"
+    private let cache = NSCache<NSString, UIImage>()
     
     init() {
         decoder.dateDecodingStrategy = .iso8601
     }
+    
     
     func getImages(of: String, page: Int) async throws -> ([FlickrPhoto]?, hasMorePages: Bool) {
         let urlString = FlickrURL.baseSearchURL.rawValue + key + "&text=\(of)&page=\(page)"
@@ -50,7 +51,6 @@ class NetworkManager {
             let user = try decoder.decode(UserProfile.self, from: data)
             return user
         } catch {
-            print(error)
             throw YBSError.unableToCompleteRequest
         }
     }

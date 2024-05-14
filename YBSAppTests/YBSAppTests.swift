@@ -11,20 +11,95 @@ import XCTest
 final class YBSAppTests: XCTestCase {
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
     }
+    
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        try super.tearDownWithError()
+    }
+    
+
+    func testNetworkingCode() throws {
+        // userID 164798111@N07
+        
+    }
+    
+    
+    func test_getImages_success() async {
+        do {
+            let (photos, hasMorePages) = try await NetworkManager.shared.getImages(of: "Yorkshire", page: 1)
+            await test_getPhotoDetails_success(photo: photos!.first!)
+            try await test_downloadImage_success(imageURL: photos!.first!.imageURL)
+            XCTAssertNotNil(photos)
+            XCTAssertTrue(hasMorePages)
+            XCTAssertEqual(photos?.count, 20)
+        } catch {
+            
+        }
+    }
+    
+    
+    func test_getUserDetails_success() async {
+        do {
+            let userDetails = try await NetworkManager.shared.getUserDetails(userID: "164798111@N07")
+            
+            XCTAssertNotNil(userDetails)
+            XCTAssertEqual(userDetails.person.id, "164798111@N07")
+        } catch {
+            
+        }
+    }
+    
+    
+    func test_getUserDetails_invalidURL() async {
+        do {
+            _ = try await NetworkManager.shared.getUserDetails(userID: "ybsapptestexample")
+            XCTFail("Error needs to be thrown")
+        } catch {
+            // Do nothing we are testing to see if error is thrown
+        }
+    }
+    
+    
+    func test_getPhotoDetails_success(photo: FlickrPhoto) async {
+        do {
+            let photoDetails = try await NetworkManager.shared.getPhotoDetails(photo: photo)
+            XCTAssertNotNil(photoDetails)
+        } catch {
+            
+        }
+    }
+    
+    
+    func test_getUserPhotos_success() async {
+        do {
+            let (photos, hasMorePages) = try await NetworkManager.shared.getUserPhotos(userID: "164798111@N07", page: 1)
+            
+            XCTAssertNotNil(photos)
+            XCTAssertTrue(hasMorePages)
+            XCTAssertEqual(photos?.count, 20)
+        } catch {
+            
+        }
+    }
+    
+    
+    func test_getUserPhotos_invalidID() async {
+        //let expectation = expectation(description: "expect call to throw error")
+        do {
+            let (photos, hasMorePages) = try await NetworkManager.shared.getUserPhotos(userID: "ybsapptestexample", page: 1)
+            XCTAssertNil(photos)
+        } catch {
+        }
+    }
+    
+    
+    func test_downloadImage_success(imageURL: String) async throws {
+        let image = await NetworkManager.shared.downloadImage(from: imageURL)
+        XCTAssertNotNil(image)
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

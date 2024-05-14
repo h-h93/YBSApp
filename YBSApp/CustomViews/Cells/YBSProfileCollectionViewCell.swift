@@ -12,7 +12,6 @@ class YBSProfileCollectionViewCell: UICollectionViewCell {
     
     static let reuseID = "Cell"
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()

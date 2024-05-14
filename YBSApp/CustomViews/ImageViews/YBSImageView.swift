@@ -7,7 +7,6 @@
 import UIKit
 
 class YBSImageView: UIImageView {
-    
     private let placeHolderImage = Images.defaultImage
     
     override init(frame: CGRect) {
